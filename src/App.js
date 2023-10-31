@@ -2,8 +2,8 @@ import * as React from 'react';
 import _ from 'lodash';
 import './App.css';
 
-const patients_family = ["佐藤", "鈴木", "山田", "山梨", "田中", "高橋"]
-const patients_name = ["太郎", "一郎", "花子"]
+// const patients_family = ["佐藤", "鈴木", "山田", "山梨", "田中", "高橋"]
+// const patients_name = ["太郎", "一郎", "花子"]
 const vitalsign = ["体温の測定", "呼吸（所見を述べてください。）", "橈骨動脈の触診（所見を述べてください。）", "上肢の血圧測定（触診法）", "上肢の血圧測定（聴診法）", "足背動脈の触診", "後脛骨動脈の触診", "膝窩動脈の触診", "下腿の浮腫"]
 const headAndNeck = ["頭", "眼", "耳", "鼻・副鼻腔", "口唇・口腔・咽頭", "唾液腺", "頭頸部リンパ節", "甲状腺"]
 const chest = ["頸部血管", "前胸部の視診", "心臓", "肺(前胸部)", "肺(背部)"]
@@ -15,7 +15,7 @@ const stations = ["バイタルサイン", "頭頸部", "四肢と脊柱", "胸�
 function question(selectedStation) {
   let reply = Array(<p>共用試験OSCE課題</p>);
   const selectedStationIndices = selectedStation.flatMap((selected, index) => selected ? [index] : [])
-  if(selectedStationIndices.length == 0) { return '領域が選択されていません'; }
+  if(selectedStationIndices.length === 0) { return '領域が選択されていません'; }
   const selectedStationIndex = _.sample(selectedStationIndices)
   reply.push(<p>---{stations[selectedStationIndex]}---</p>);
   switch(selectedStationIndex){
@@ -65,9 +65,9 @@ function question(selectedStation) {
       } </ul>)
       reply.push(<p>＊所見を評価者に述べる必要はありません。</p>);
       break
-    case 6: // その他
+    default: // その他
       const other_num = _.random(0, 2);
-      if(other_num == 0){
+      if(other_num === 0){
         const draw_blood = _.random(0, 1)
         reply.push(<p> 基本的臨床手技 </p>)
         reply.push(<ul>
@@ -79,7 +79,7 @@ function question(selectedStation) {
           <li>処置後、速乾性消毒薬による手指消毒</li>
         </ul>)
         reply.push(<p> ＊事前に、あなたが採血を行う承諾を得ています。 </p>)
-      }else if(other_num == 1){
+      }else if(other_num === 1){
         reply.push(<p> 救急 </p>)
         reply.push(<p> 患者：氏名不詳　40歳ぐらい　男性 </p>)
         reply.push(<p> ここは病院の売店の前です。 </p>)
@@ -91,7 +91,7 @@ function question(selectedStation) {
         reply.push(<p> ＊患者さんの所見は評価者が告げます。 </p>)
         reply.push(<p> ＊評価者が病院職員役、医師役をします。 </p>)
         reply.push(<p> ＊あなたは手袋のみを持っています。" </p>)
-      }else if(other_num == 2){
+      }else if(other_num === 2){
         reply.push(<p>感染対策</p>)
         reply.push(<p>下記の項目を行ってください。</p>)
         reply.push(<p>制限時間は５分間です。</p>)
