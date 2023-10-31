@@ -107,7 +107,7 @@ function question(selectedStation) {
 function App() {
   const [selectedStation, setSelectedStation] = React.useState(Array(stations.length).fill(false));
   const [text, setText] = React.useState('');
-  return <div>
+  return <div className='app'>
     <div>
       {
         stations.map((station, station_index) => 
@@ -137,11 +137,14 @@ function App() {
       </button>
     </div>
     <div>
-      <button onClick={() => setText(question(selectedStation))}>
+      <button
+        onClick={() => setText(question(selectedStation))}
+        className='gen-button'
+      >
         生成
       </button>
     </div>
-    <div>
+    <div className='text'>
       { text }
     </div>
   </div>
