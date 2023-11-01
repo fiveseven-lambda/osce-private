@@ -13,17 +13,15 @@ button {
   margin: 3pt;
 }
 .gen-button {
-  padding: 10pt 30pt;
+  font-size: 200%;
 }
 .text {
   margin: 0 auto;
   width: fit-content;
 }
-.text ul {
+.itemize {
   margin: 0 auto;
   width: fit-content;
-}
-.text li {
   text-align: start;
 }
 
